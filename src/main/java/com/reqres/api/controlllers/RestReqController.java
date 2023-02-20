@@ -1,5 +1,7 @@
 package com.reqres.api.controlllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +44,17 @@ public class RestReqController {
 	
 	
 	@RequestMapping(value = "v1/libraryevent", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<LibraryEvent> postLibraryEvent(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException{
+	public ResponseEntity<LibraryEvent> postLibraryEvent(@RequestBody @Valid  LibraryEvent libraryEvent) throws JsonProcessingException{
+		
+//		libraryEventProducer.sendLibraryEvent(libraryEvent);
+		libraryEventProducer.sendLibraryEvent_approach_2(libraryEvent);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
+	}
+	
+	
+	@PutMapping(value = "v1/libraryevent", consumes = "application/json")
+	public ResponseEntity<LibraryEvent> putLibraryEvent(@RequestBody @Valid  LibraryEvent libraryEvent) throws JsonProcessingException{
 		
 //		libraryEventProducer.sendLibraryEvent(libraryEvent);
 		libraryEventProducer.sendLibraryEvent_approach_2(libraryEvent);

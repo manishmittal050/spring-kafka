@@ -10,7 +10,11 @@ spring:
     producer:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer      
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer  
+      properties:
+        acks: all
+        retries: 3 
+        retry.backoff.ms: 200000
     admin:
       properties:
         bootstrap.servers: localhost:9092

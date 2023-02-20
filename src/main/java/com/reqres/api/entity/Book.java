@@ -1,6 +1,9 @@
 package com.reqres.api.entity;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +17,11 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Book {
-//    @NotNull
+    @NotNull
     private Integer bookId;
-//    @NotBlank
+    @NotBlank
     private String bookName;
-//    @NotBlank
+    @NotBlank
     private String bookAuthor;
 	public Integer getBookId() {
 		return bookId;

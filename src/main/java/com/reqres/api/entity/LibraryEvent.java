@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import javax.validation.Valid;
-//import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 @AllArgsConstructor
@@ -17,8 +17,8 @@ public class LibraryEvent {
 
     private Integer libraryEventId;
 //    private LibraryEventType libraryEventType;
-//    @NotNull
-//    @Valid
+    @NotNull
+    @Valid
     private Book book;
 	public Integer getLibraryEventId() {
 		return libraryEventId;
